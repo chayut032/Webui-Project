@@ -1,20 +1,19 @@
-$(function(){
+$(function() {
+    $.get("data/customers.json", function(data) {
 
+    console.log(data);
+        var i = 0
+        for (i = 0;i< data.length;i++){
+         var j = i +1;
+         htmlString = '<tr><th scope ="row">'+j+'</th><td>'+data[i].customerID+'</td><td><a href="custdetail.html" onclick="setCookies('+i+')">'
+         +data[i].companyName+'</td><td>'+data[i].contactName+'</td><td>'+data[i].contactTitle+'</td></tr>';
+      
+     $('#data').append(htmlString);
+        }
+    
+    });
+  });
 
-        $.get("data/customers.json", function(Search, status){
-            //console.log(data);
-            //console.log(status);
-            if(status == 'success'){
-               var products = Search.Search;
-               var tableHead = '<tr><th>ID</th><th>Name</th><th>Contact Name</th><th>Contact Title</th></tr>';
-               $('#customers').append(tableHead);
-               for(var index in products){
-                   var product = products[index];
-                   var tableRow = '<tr><td>' + product.customerID + '</td><td>' + product.companyName + '</td><td>' + product.contactName + '</td><td>' + product.contactTitle + '</td></tr>' ; 
-                   $('#customers').append(tableRow);
-                   console.log(product);
-               } 
-            }
-        });
-
-});
+  function setCookies(i){
+    document.cookie = i;
+  }
