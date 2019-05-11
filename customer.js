@@ -3,6 +3,8 @@ $(function() {
 
     console.log(data);
         var i = 0
+        var tableHead = '<tr><th>#</th><th>ID</th><th>Name</th><th>Contact Name</th><th>Contact Title</th></tr>';
+        $('#data').append(tableHead);
         for (i = 0;i< data.length;i++){
          var j = i +1;
          htmlString = '<tr><th scope ="row">'+j+'</th><td>'+data[i].customerID+'</td><td><a href="custdetail.html" onclick="setCookies('+i+')">'
